@@ -1,17 +1,30 @@
 def adventure_game
-  puts "Which direction do you want to move?"
-  first_move = gets.chomp
-  if first_move.downcase == "left"
-    return "You have have been killed by a werewolf"
-  elsif first_move.downcase == "right"
-    return "You have been been killed by a goblin"
-  else puts "Which direction would you like to go next?"
-    second_move = gets.chomp
-    if second_move.downcase == "left"
-      return "You have been killed by a werewolf"
-    elsif second_move.downcase == "right"
-      return "You have been killed by a goblin"
-    else return "Congratulations you have survived the game!"
-    end
+  question_one = "Which direction do you want to move?"
+  question_two = "Which direction would you like to go next?"
+  werewolf = "You have been killed by a werewolf"
+  goblin = "You have been killed by a goblin"
+  puts question_one
+  first_move = gets.chomp.downcase
+  while first_move != "left" && first_move!="right" && first_move!="forward"
+    question_one
+    first_move = gets.chomp.downcase
   end
+  if first_move == "left"
+    return werewolf
+  elsif first_move == "right"
+    return goblin
+  else
+    puts question_two
+  end
+  second_move = gets.chomp.downcase
+  while first_move != "left" && first_move!="right" && first_move!="forward"
+    question_two
+    second_move = gets.chomp.downcase
+  end
+  if second_move == "left"
+    return werewolf
+  elsif second_move == "right"
+    return goblin
+  end
+  "Congratulations you have survived the game!"
 end
